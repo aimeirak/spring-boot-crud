@@ -1,10 +1,13 @@
-pipeline{
+pipeline {
 	agent any
-	stages{
-		stage('stage 1'){
-			steps{
-				echo 'Hello Everyone'
-			}
-		}
-	}
+    stages {
+        stage("Build"){
+            steps {
+                script {
+                    currentBuild.displayName = "The name."
+                    currentBuild.description = "The best description."
+                }
+            }
+        }
+    }
 }
