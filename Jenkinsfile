@@ -1,9 +1,17 @@
 pipeline {
     agent any
+    environment {
+        CI = 'true'
+    }
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'mvn clean'
+                sh 'mvn install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
